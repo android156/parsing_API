@@ -27,7 +27,7 @@ user_data = json.loads(req.text)  # тут почему-то возвращае�
 # можно было дернуть только названия.
 print_list_values(user_data)
 # Сохраняем список репозиториев в json файл
-with open('data.txt', 'w') as outfile:
+with open('user_repos.json', 'w') as outfile:
     json.dump(req.text, outfile)
 
 # В качестве второго API взял погоду, сменил город на Москву, температуру получил в градусах, вывод
@@ -42,4 +42,7 @@ req = requests.get(f'{service}?q=Moscow&appid={appid}&lang={language}&units={met
 data = json.loads(req.text)
 print(f'req.text сунули в JSON.loads - {type(data)}')
 print_dictionary_values(data)
+
+with open('weather_in_moscow.json', 'w') as outfile:
+    json.dump(req.text, outfile)
 
